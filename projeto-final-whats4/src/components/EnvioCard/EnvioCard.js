@@ -2,57 +2,63 @@ import React from 'react'
 import styled from 'styled-components';
 
 
-const InputBorda = styled.div`
-border: 1px solid black;
-width: 300px;
-position: fixed;
-bottom: 100px;
+const FormDaMensagem = styled.div`
+display: flex;
+`
+const InputdoUsuario = styled.input`
+width: 20%;
+`
+const InputdaMensagem = styled.input`
+width: 70%;
+`
+const BotaoEnviar = styled.button`
+width: 50px;
+background-color: orange;
+border-radius: 5px
 `
 
+//  mudei os nomes dos estados, agora estao diferentes dos nomes dos Inputs 
 
 class EnvioCard extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-    listaDeMsgs: [],
-    InputdoUsuario: "",
-    InputdaMensagem: "",
+     user: "",
+     mensagem: "",
       };
     }
+      onChangeUsuario = (event) => {
+        this.setState({user: event.target.value})
+      }
+    
+      onChangeMensagem = (event) => {
+        this.setState({mensagem: event.target.value})
+      }
 
-    adicionarMsg = () => {
-        console.log(this.state.InputdoUsuario, this.state.InputdaMensagem)
-        const novaMensagem= {
-          nome: this.state.InputdoUsuario,
-          mensagem: this.state.InputdaMensagem
-        }
-    
-        const copiaDaListaDeMensagens = [novaMensagem, ...this.state.listaDeMsgs]
-    
-        this.setState({
-          listaDeMsgs: copiaDaListaDeMensagens,
-          InputdoUsuario: "",
-          InputdaMensagem: ""
-        })
-      }
-    
-      onChangeUsuario = (e) => {
-        this.setState({InputdoUsuario: e.target.value})
-      }
-    
-      onChangeMensagem = (e) => {
-        this.setState({InputdaMensagem: e.target.value})
-      }
-     
+      // função de guardar valores para adc na nova mensagem
+
+      aoClicarEnviar =() => {
+        const texto = {
+            enviarusuario: this.state.user,
+            enviarmensagem: this.state.mensagem
+        
+          }
+
+    // adc a nova mensagem com os valores da const 
+    this.props.adcNovaMensagem(texto)
+
+    // limpa os inputs de usuário e mensagem depois de enviar a mensagem
+    this.setState({user: '', mensagem:''})
+
+    }
+
     render() {
         return (
-            <InputBorda> 
-
-            <input type="text" placeholder="usuario" value={this.state.InputdoUsuario} onChange = {this.onChangeUsuario} /> 
-            <input  type="text" placeholder="mensagem" value={this.state.InputdaMensagem} onChange = {this.onChangeMensagem} /> 
-            <button onClick={this.adicionarMsg}>Enviar</button>
-
-            </InputBorda>
+          <FormDaMensagem> 
+            <InputdoUsuario type="text" placeholder="Usuário" value={this.state.user} onChange = {this.onChangeUsuario} /> 
+            <InputdaMensagem  type="text" placeholder="Mensagem" value={this.state.mensagem} onChange = {this.onChangeMensagem} /> 
+            <BotaoEnviar onClick={this.aoClicarEnviar}> Enviar </BotaoEnviar>
+          </FormDaMensagem>
         )
     }
 }
