@@ -1,28 +1,28 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 
 const FormDaMensagem = styled.div`
-display: flex;
+  display: flex;
 `
 const InputdoUsuario = styled.input`
-width: 20%;
-border-radius: 5px;
-margin-bottom: 5px;
-margin-left: 2px
+  width: 20%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-left: 2px;
 `
 const InputdaMensagem = styled.input`
-width: 70%;
-border-radius: 5px
-height: 30px;
-margin-bottom: 5px
+  width: 70%;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 5px;
 `
 const BotaoEnviar = styled.button`
-width: 50px;
-background-color: silver;
-border-radius: 5px;
-border: 1px solid black;
-margin-bottom: 5px  
+  width: 50px;
+  background-color: silver;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-bottom: 5px;
 `
 
 //  mudei os nomes dos estados, agora estao diferentes dos nomes dos Inputs 
