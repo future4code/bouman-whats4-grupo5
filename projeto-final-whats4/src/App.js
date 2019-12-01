@@ -12,11 +12,12 @@ const Page = styled.div`
 const MainContainer = styled.div`
  width: 600px;
  height: 50vw;
- border: 1px solid black;
  display: flex;
  flex-direction: column;
  margin-top: 30px;
+ border: 1px solid grey;
  justify-content: flex-end;
+ background-color: #ecd8c6
 `
 
 const ContainerDaMensagem = styled.div`
@@ -27,10 +28,10 @@ const ContainerDaMensagem = styled.div`
 const NovoP = styled.p`
 margin-bottom: 10px;
 padding: 8px;
-border: 1px solid grey;
 width: 50%;
 border-radius: 5px;
-background-color: silver
+background-color: rgb(220, 248, 198);
+box-shadow: rgba(0, 0, 0, 0.13) 0px 1px 0.5px;
 `
 
   class App extends React.Component{
