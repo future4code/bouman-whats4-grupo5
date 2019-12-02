@@ -19,7 +19,6 @@ const MainContainer = styled.div`
  justify-content: flex-end;
  background-color: #ecd8c6
 `
-
 const ContainerDaMensagem = styled.div`
  display: flex;
  flex-direction: column;
@@ -34,7 +33,7 @@ background-color: rgb(220, 248, 198);
 box-shadow: rgba(0, 0, 0, 0.13) 0px 1px 0.5px;
 `
 
-  class App extends React.Component{
+class App extends React.Component{
     constructor(){
       super()
       this.state = {
@@ -47,12 +46,6 @@ box-shadow: rgba(0, 0, 0, 0.13) 0px 1px 0.5px;
     this.setState({mensagemEnviada: [...this.state.mensagemEnviada, props ]})
   }
 
-// função pra enviar nova mensagem com enter 
-  aoClicarEnter = (event) => {
-    if (event.key === "Enter") {
-     return this.adcNovaMensagem();
-    }
-  }  
 
   render(){
   return (
@@ -62,7 +55,7 @@ box-shadow: rgba(0, 0, 0, 0.13) 0px 1px 0.5px;
           {this.state.mensagemEnviada.map((props) => 
           <NovoP><strong>{props.enviarusuario + ': '}</strong>{props.enviarmensagem}</NovoP>)}
         </ContainerDaMensagem>
-        <EnvioCard aoClicarEnter={this.aoClicarEnter} adcNovaMensagem={this.adcNovaMensagem}></EnvioCard>
+        <EnvioCard  adcNovaMensagem={this.adcNovaMensagem}></EnvioCard>
       </MainContainer>
     </Page>
   );

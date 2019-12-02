@@ -50,22 +50,29 @@ class EnvioCard extends React.Component {
             enviarusuario: this.state.user,
             enviarmensagem: this.state.mensagem
         
-          }
+          }  
 
-    // adc a nova mensagem com os valores da const 
-    this.props.adcNovaMensagem(texto)
+          this.props.adcNovaMensagem(texto)
 
     // limpa os inputs de usuário e mensagem depois de enviar a mensagem
     this.setState({user: '', mensagem:''})
 
     }
 
+// função pra enviar nova mensagem com enter 
+aoClicarEnter = (event) => {
+  if (event.key === "Enter") {
+   this.aoClicarEnviar()
+  }
+  console.log(event)
+}
+
     render() {
         return (
           <FormDaMensagem> 
             <InputdoUsuario type="text" placeholder="Usuário" value={this.state.user} onChange = {this.onChangeUsuario} /> 
-            <InputdaMensagem  type="text" placeholder="Mensagem" value={this.state.mensagem} onChange = {this.onChangeMensagem} /> 
-            <BotaoEnviar onClick={this.aoClicarEnviar}> Enviar </BotaoEnviar>
+            <InputdaMensagem  onKeyPress={this.aoClicarEnter}  type="text" placeholder="Mensagem" value={this.state.mensagem} onChange = {this.onChangeMensagem} /> 
+            <BotaoEnviar  onClick={this.aoClicarEnviar}> Enviar </BotaoEnviar>
           </FormDaMensagem>
         )
     }
