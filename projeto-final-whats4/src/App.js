@@ -1,8 +1,8 @@
-  
 import React from 'react';
 import './App.css';
-import styled from 'styled-components'
-import EnvioCard from './components/EnvioCard/EnvioCard'
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import EnvioCard from './components/EnvioCard/EnvioCard';
 
 const Page = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const MainContainer = styled.div`
  margin-top: 30px;
  border: 1px solid grey;
  justify-content: flex-end;
- background-color: #ecd8c6
+ background-color: #ecd8c6;
 `
 const ContainerDaMensagem = styled.div`
  display: flex;
@@ -40,12 +40,12 @@ class App extends React.Component{
       mensagemEnviada:[]
       }
     }
+  }
 
   // função que adiciona uma nova mensagem fazendo a cópia do array
   adcNovaMensagem = (props) => {
     this.setState({mensagemEnviada: [...this.state.mensagemEnviada, props ]})
   }
-
 
   render(){
   return (
@@ -60,7 +60,15 @@ class App extends React.Component{
     </Page>
   );
   }
+
   }
-  
+}
+
+//
+
+EnvioCard.propTypes = {
+  enviarmensagem: PropTypes.string.isRequired,
+  enviarusuario: PropTypes.string.isRequired,
+} 
 
 export default App;
